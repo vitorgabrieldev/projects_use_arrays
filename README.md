@@ -7,5 +7,5 @@
 | **1**  | Lista de tarefa | Facíl |
 | **2** | Carrinho de compra | Facíl |
 | **3** | Votação | Médio |
-| **4** | Lista de tarefa (Concluidas) | Média |
+| **4** | Lista de tarefa (Concluidas) | Médio |
 | **5** | Jogo tabuleiro | Dificil |
