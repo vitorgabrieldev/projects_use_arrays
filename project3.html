@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aplicativo de Enquete</title>
+</head>
+<body>
+    <header style="display: flex;padding: .3rem;justify-content: left"><a href="./index.html">Voltar</a></header>
+    <h1>Enquete: Qual é sua cor favorita?</h1>
+    <ul id="options">
+        <li>
+            <label>
+                <input type="radio" name="color" value="red"> Vermelho
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" name="color" value="blue"> Azul
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" name="color" value="green"> Verde
+            </label>
+        </li>
+    </ul>
+    <button onclick="vote()">Votar</button>
+    <h2>Resultados:</h2>
+    <ul id="results"></ul>
+
+    <script>
+        const options = [
+            { value: "red", label: "Vermelho", count: 0 },
+            { value: "blue", label: "Azul", count: 0 },
+            { value: "green", label: "Verde", count: 0 }
+        ];
+
+        function vote() {
+            const selectedOption = document.querySelector('input[name="color"]:checked');
+            if (selectedOption) {
+                const selectedValue = selectedOption.value;
+                const selectedOptionObject = options.find(option => option.value === selectedValue);
+                if (selectedOptionObject) {
+                    selectedOptionObject.count++;
+                    updateResults();
+                }
+            }
+        }
+
+        function updateResults() {
+            const resultsElement = document.getElementById("results");
+            resultsElement.innerHTML = "";
+
+            for (const option of options) {
+                const li = document.createElement("li");
+                li.textContent = `${option.label}: ${option.count} votos`;
+                resultsElement.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>

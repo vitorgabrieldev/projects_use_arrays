@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aplicativo de Gerenciamento de Tarefas</title>
+</head>
+<body>
+    <header style="display: flex;padding: .3rem;justify-content: left"><a href="./index.html">Voltar</a></header>
+    <h1>Aplicativo de Gerenciamento de Tarefas</h1>
+    <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa">
+    <button onclick="addTask()">Adicionar Tarefa</button>
+
+    <h2>Tarefas Pendentes</h2>
+    <ul id="pendingTasks"></ul>
+
+    <h2>Tarefas Concluídas</h2>
+    <ul id="completedTasks"></ul>
+
+    <script>
+        const tasks = [];
+
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskText = taskInput.value;
+
+            if (taskText.trim() !== "") {
+                const newTask = {
+                    text: taskText,
+                    completed: false
+                };
+                tasks.push(newTask);
+                taskInput.value = "";
+                updateTaskLists();
+            }
+        }
+
+        function toggleTaskCompletion(index) {
+            tasks[index].completed = !tasks[index].completed;
+            updateTaskLists();
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            updateTaskLists();
+        }
+
+        function updateTaskLists() {
+            const pendingTasksElement = document.getElementById("pendingTasks");
+            const completedTasksElement = document.getElementById("completedTasks");
+            
+            pendingTasksElement.innerHTML = "";
+            completedTasksElement.innerHTML = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+                const task = tasks[i];
+                const li = document.createElement("li");
+
+                if (task.completed) {
+                    li.innerHTML = `<del>${task.text}</del> <button onclick="toggleTaskCompletion(${i})">Desmarcar</button> <button onclick="deleteTask(${i})">Excluir</button>`;
+                    completedTasksElement.appendChild(li);
+                } else {
+                    li.innerHTML = `${task.text} <button onclick="toggleTaskCompletion(${i})">Concluir</button> <button onclick="deleteTask(${i})">Excluir</button>`;
+                    pendingTasksElement.appendChild(li);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

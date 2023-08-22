@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulador de Jogo de Tabuleiro</title>
+</head>
+<body>
+    <header style="display: flex;padding: .3rem;justify-content: left"><a href="./index.html">Voltar</a></header>
+    <h1>Simulador de Jogo de Tabuleiro</h1>
+    <div id="board" style="display: grid; grid-template-columns: repeat(8, 50px); gap: 1px;"></div>
+    <p>Comandos: <input type="text" id="commandInput"><button onclick="executeCommand()">Executar</button></p>
+
+    <script>
+        const boardSize = 8;
+        const board = new Array(boardSize).fill(null).map(() => new Array(boardSize).fill(null));
+
+        function initializeBoard() {
+            for (let row = 0; row < boardSize; row++) {
+                for (let col = 0; col < boardSize; col++) {
+                    const square = document.createElement("div");
+                    square.style.width = "50px";
+                    square.style.height = "50px";
+                    square.style.backgroundColor = (row + col) % 2 === 0 ? "white" : "black";
+                    document.getElementById("board").appendChild(square);
+                }
+            }
+        }
+
+        function executeCommand() {
+            const commandInput = document.getElementById("commandInput");
+            const command = commandInput.value.trim().toLowerCase();
+
+            if (command.length === 2) {
+                const col = command.charCodeAt(0) - "a".charCodeAt(0);
+                const row = parseInt(command[1]) - 1;
+
+                if (isValidPosition(row, col)) {
+                    highlightSquare(row, col);
+                } else {
+                    alert("Posição inválida.");
+                }
+            } else {
+                alert("Comando inválido.");
+            }
+
+            commandInput.value = "";
+        }
+
+        function isValidPosition(row, col) {
+            return row >= 0 && row < boardSize && col >= 0 && col < boardSize;
+        }
+
+        function highlightSquare(row, col) {
+            const squares = document.querySelectorAll("#board div");
+            const index = row * boardSize + col;
+
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].style.border = "none";
+            }
+
+            squares[index].style.border = "2px solid red";
+        }
+
+        initializeBoard();
+    </script>
+</body>
+</html>

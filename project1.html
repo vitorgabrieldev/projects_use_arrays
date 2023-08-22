@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <header style="display: flex;padding: .3rem;justify-content: left"><a href="./index.html">Voltar</a></header>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
+    <button onclick="addTask()">Adicionar</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskList = document.getElementById("taskList");
+
+            const taskText = taskInput.value;
+            if (taskText.trim() !== "") {
+                const li = document.createElement("li");
+                li.textContent = taskText;
+                taskList.appendChild(li);
+                taskInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Painel - Home</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: rgb(233, 233, 233);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        * {
+            font-family: 'Poor Story', cursive;
+        }
+        .board {
+            border: 1px solid #000;
+        }
+        .row {
+            display: flex;
+        }
+        .card {
+            padding: .5rem;
+            background: rgb(194, 192, 192);
+            margin: .3rem;
+            border-radius: 10px;
+            transition: .33s;
+            border: 4px solid transparent;
+            cursor: pointer;
+        }
+        .card:hover {
+            border: 4px solid rgb(109, 109, 109);
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        button {
+            padding: .3rem;
+            font-size: 2rem;
+            border-radius: 8px;
+            border: 1px solid #888;
+            transition: .33s;
+            cursor: pointer;
+        }
+        button:hover {
+            background: rgb(197, 197, 197);
+        }
+    </style>
+
+</head>
+<body>
+    <section class="board">
+        <div class="row">
+            <div class="card">
+                <h1>Lista de tarefa</h1>
+                <button type="button"><a href="./project1.html">Ver mais</a></button>
+            </div>
+            <div class="card">
+                <h1>Carrinho de compra</h1>
+                <button type="button"><a href="./project2.html">Ver mais</a></button>
+            </div><div class="card">
+                <h1>Votação</h1>
+                <button type="button"><a href="./project3.html">Ver mais</a></button>
+            </div><div class="card">
+                <h1>Lista de tarefa (Concluidas)</h1>
+                <button type="button"><a href="./project4.html">Ver mais</a></button>
+            </div><div class="card">
+                <h1>Jogo tabuleiro</h1>
+                <button type="button"><a href="./project5.html">Ver mais</a></button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
